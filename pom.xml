@@ -43,7 +43,7 @@
     </build>
 
     <scm>
-        <developerConnection>scm:git:git@github.com:Tobi-Adegbuji/pet-clinic-application.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/Tobi-Adegbuji/pet-clinic-application.git</developerConnection>
       <tag>pet-clinic-application-0.0.1</tag>
   </scm>
 
