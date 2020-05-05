@@ -3,8 +3,9 @@ package edu.gsu.petclinicapplication.model;
 import java.io.Serializable;
 
 /*
-Each of our classes extend base entity, one way or another.
+Each of our model objects extend base entity, one way or another.
 This is exactly what it mean. Its the base entity, which contains just the id for now.
+So all of our objects have this id property. This closes issue 10 on Github
 * */
 
 public class BaseEntity implements Serializable {
