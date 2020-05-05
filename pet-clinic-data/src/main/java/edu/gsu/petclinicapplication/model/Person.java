@@ -2,7 +2,7 @@ package edu.gsu.petclinicapplication.model;
 
 //Person is the base class
 
-public class Person {
+public class Person extends BaseEntity {
     private String firstName;
     private String lastName;
 
