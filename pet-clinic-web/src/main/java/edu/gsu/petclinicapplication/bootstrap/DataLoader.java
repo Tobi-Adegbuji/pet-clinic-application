@@ -64,9 +64,6 @@ public class DataLoader implements CommandLineRunner {
 * run everything inside of it.
 *
 * What we are essentially doing is creating 3 ways of persisting data.
-* 1)Through a hash map hence the map package
-* 2)Via JPA Data
+* 1)Through a hash map * 2)Via JPA Data
 * 3) ?
-*
-* We will configure this with spring so that we can use different Spring profiles to change our data persistence platforms
 * */
