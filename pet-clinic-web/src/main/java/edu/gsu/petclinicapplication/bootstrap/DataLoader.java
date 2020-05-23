@@ -4,8 +4,7 @@ import edu.gsu.petclinicapplication.model.Owner;
 import edu.gsu.petclinicapplication.model.Vet;
 import edu.gsu.petclinicapplication.services.OwnerService;
 import edu.gsu.petclinicapplication.services.VetService;
-import edu.gsu.petclinicapplication.services.map.OwnerServiceMap;
-import edu.gsu.petclinicapplication.services.map.VetServiceMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +15,10 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
 
-    //We will later make spring configure this for us
-    public DataLoader() {
-    ownerService = new OwnerServiceMap();
-    vetService = new VetServiceMap();
+    @Autowired
+    public DataLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
@@ -63,4 +62,11 @@ public class DataLoader implements CommandLineRunner {
 * The Component annotation allows the DataLoader to be created as a bean in the spring context
 * B/c this class implements CommandLineRunner, after the spring context loads the overidden run method will
 * run everything inside of it.
+*
+* What we are essentially doing is creating 3 ways of persisting data.
+* 1)Through a hash map hence the map package
+* 2)Via JPA Data
+* 3) ?
+*
+* We will configure this with spring so that we can use different Spring profiles to change our data persistence platforms
 * */
