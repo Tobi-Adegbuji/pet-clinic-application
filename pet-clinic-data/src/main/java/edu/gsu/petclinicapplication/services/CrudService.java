@@ -2,7 +2,7 @@ package edu.gsu.petclinicapplication.services;
 
 import java.util.Set;
 
-//Creating a base interface ofr other services. We are imitating the CRUDRepo Interface
+//Creating a base interface for other services. We are imitating the CRUDRepo Interface
 //
 public interface CrudService<T,ID> {
 

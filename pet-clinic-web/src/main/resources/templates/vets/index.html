@@ -6,5 +6,22 @@
 </head>
 <body>
     <h1 th:text="'List of vets'">List of vets...</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="vet : ${vets}">
+                <td th:text="${vet?.id}"></td> <!--vet is coming from the each iterator up there in the tr attribute-->
+                <td th:text="${vet?.firstName}"></td>
+                <td th:text="${vet?.lastName}"></td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 </html>

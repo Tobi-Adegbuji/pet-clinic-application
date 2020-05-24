@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /*
 Each of our model objects extend base entity, one way or another.
-This is exactly what it mean. Its the base entity, which contains just the id for now.
+This is exactly what it means. Its the base entity, which contains just the id for now.
 So all of our objects have this id property. This closes issue 10 on Github
 * */
 
