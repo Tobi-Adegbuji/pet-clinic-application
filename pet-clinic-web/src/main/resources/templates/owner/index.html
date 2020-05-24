@@ -5,6 +5,26 @@
     <title>List of Owners</title>
 </head>
 <body>
+<!--/*@thymesVar id="owner" type="edu.gsu.petclinicapplication.model.Owner"*/-->
     <h1 th:text="'List of owners'"> A list of owners...</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+        </thead>
+        <tbody>
+<!--        the th:each is an iterator. It will create a row for each owner.-->
+        <tr th:each="owner : ${owners}">
+            <td th:text="${owner?.id}">1</td>
+            <td th:text="${owner?.firstName}">Joe</td>
+            <td th:text="${owner?.lastName}">Buck</td>
+        </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>
