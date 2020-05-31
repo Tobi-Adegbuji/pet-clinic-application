@@ -1,8 +1,10 @@
 package edu.gsu.petclinicapplication.bootstrap;
 
 import edu.gsu.petclinicapplication.model.Owner;
+import edu.gsu.petclinicapplication.model.PetType;
 import edu.gsu.petclinicapplication.model.Vet;
 import edu.gsu.petclinicapplication.services.OwnerService;
+import edu.gsu.petclinicapplication.services.PetTypeService;
 import edu.gsu.petclinicapplication.services.VetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,16 +16,29 @@ public class DataLoader implements CommandLineRunner {
     //Implementing
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
     @Autowired
     //This is being INJECTED with ----"OwnerServiceMap"------ and OwnerServiceMap implements AbstractMap
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
     public void run(String... args) throws Exception {
+
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        //The save method returns a petType and also saves the petType to the database while giving the petType an ID
+        PetType savedDogPrtType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("cat");
+        PetType savedCatPrtType = petTypeService.save(cat);
+
+
         Owner owner1 = new Owner();
         owner1.setFirstName("John");
         owner1.setLastName("Doe");
