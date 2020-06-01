@@ -92,11 +92,11 @@ public class DataLoader implements CommandLineRunner {
 }
 
 /*
-* The Component annotation allows the DataLoader to be created as a bean in the spring context
-* B/c this class implements CommandLineRunner, after the spring context loads the overidden run method will
-* run everything inside of it.
-*
-* What we are essentially doing is creating 3 ways of persisting data.
-* 1)Through a hash map * 2)Via JPA Data
-* 3) ?
-* */
+ * The Component annotation allows the DataLoader to be created as a bean in the spring context
+ * B/c this class implements CommandLineRunner, after the spring context loads the overidden run method will
+ * run everything inside of it.
+ *
+ * What we are essentially doing is creating 3 ways of persisting data.
+ * 1)Through a hash map * 2)Via JPA Data
+ * 3) ?
+ * */
