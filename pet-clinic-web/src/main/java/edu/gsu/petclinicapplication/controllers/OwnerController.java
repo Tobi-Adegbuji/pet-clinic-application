@@ -22,4 +22,11 @@ public class OwnerController {
         return "owner/index"; //<---The name of view that we return to front controller to give to the view
     }
 
+    @RequestMapping("/find")
+    public String findOwners(){
+        return "noimpl";
+    }
+
+
+
 }
