@@ -1,5 +1,6 @@
 package edu.gsu.petclinicapplication.model;
 
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /*
@@ -8,6 +9,7 @@ This is exactly what it means. Its the base entity, which contains just the id f
 So all of our objects have this id property. This closes issue 10 on Github
 * */
 
+@MappedSuperclass  //Tells JPA that other classes will inherit this class
 public class BaseEntity implements Serializable {
     private Long id; //Hibernate recommends using box types since they can be null
 
