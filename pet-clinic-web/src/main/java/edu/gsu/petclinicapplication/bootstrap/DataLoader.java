@@ -1,10 +1,7 @@
 package edu.gsu.petclinicapplication.bootstrap;
 
 import edu.gsu.petclinicapplication.model.*;
-import edu.gsu.petclinicapplication.services.OwnerService;
-import edu.gsu.petclinicapplication.services.PetTypeService;
-import edu.gsu.petclinicapplication.services.SpecialtyService;
-import edu.gsu.petclinicapplication.services.VetService;
+import edu.gsu.petclinicapplication.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -19,14 +16,16 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
     @Autowired
     //This is being INJECTED with ----"OwnerServiceMap"------ and OwnerServiceMap implements AbstractMap
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -48,6 +47,17 @@ public class DataLoader implements CommandLineRunner {
         cat.setName("cat");
         PetType savedCatPetType = petTypeService.save(cat);
 
+        Specialty radiology = new Specialty();
+        radiology.setDescription("Radiology");
+        Specialty savedRadiology = specialtyService.save(radiology);
+
+        Specialty dentistry = new Specialty();
+        radiology.setDescription("Dentistry");
+        Specialty savedDentistry = specialtyService.save(dentistry);
+
+        Specialty surgery = new Specialty();
+        radiology.setDescription("Surgery");
+        Specialty savedSurgery =specialtyService.save(surgery);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("John");
@@ -81,19 +91,13 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Owners Loaded");
 
+        Visit catVisit = new Visit();
+        catVisit.setPet(marysCat);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Common Cold");
+        visitService.save(catVisit);
 
-        //Setting Up Services
-        Specialty radiology = new Specialty();
-        radiology.setDescription("Radiology");
-        Specialty savedRadiology = specialtyService.save(radiology);
 
-        Specialty dentistry = new Specialty();
-        radiology.setDescription("Dentistry");
-        Specialty savedDentistry = specialtyService.save(dentistry);
-
-        Specialty surgery = new Specialty();
-        radiology.setDescription("Surgery");
-        Specialty savedSurgery =specialtyService.save(surgery);
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Ashley");
@@ -117,6 +121,6 @@ public class DataLoader implements CommandLineRunner {
  * run everything inside of it.
  *
  * What we are essentially doing is creating 3 ways of persisting data.
- * 1)Through a hash map * 2)Via JPA Data
- * 3) ?
+ * 1)Through a hash map * 2)Via JPA
+ *
  * */
